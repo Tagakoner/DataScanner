@@ -43,4 +43,15 @@ page-home {
           background-color: rgb(220, 220, 220);
         }
       }
+      .low-note{
+        //float:right;
+       //float:bottom;
+       // bottom: 10px;
+       //position: absolute;
+        position: fixed;
+        bottom: 0;
+        right: 15px;
+        font-family: "Roboto", "Helvetica Neue", sans-serif;
+        font-size: 1rem;
+      }
 }

@@ -15,22 +15,16 @@
       </div>
     </div>
   
-<!--
-    <ion-item>
-        <ion-label color="primary" floating>Barcode</ion-label>
-        <ion-input name="Barcode" ngModel></ion-input>
-      </ion-item>
-    
-    
-    <ion-item>
-        <ion-label color="primary" floating>amount</ion-label>
-        <ion-input type="number"></ion-input>
-    </ion-item>
-  -->
   <div padding>
   <button ion-button (click)="scanStock()"> Start new inventory </button>
-  <button ion-button (click)="previousScans()"> show previous scan </button>
-  <button ion-button (click)="continueFromPrevious()"> Continue from previous </button>
+  <!--<button ion-button (click)="previousScans()"> show previous scan </button>
+  <button ion-button (click)="continueFromPrevious()"> Continue from previous </button>-->
+
+  </div>
+  <div class="low-note">
+    Beta build
+  </div>
+  <!--
     <ion-list>
       
     <ion-item *ngFor='let stockItem of stockItems'>
@@ -58,3 +52,4 @@
             {{ scannedStockItem.date }}
           </button>
 </ion-item>
+-->

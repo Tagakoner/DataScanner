@@ -1,0 +1,148 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Add Stock</ion-title>
+
+  <ion-buttons end>
+    <button ion-button icon-only (click)="downloadCSV()">
+        <ion-icon name="download"></ion-icon>
+      </button>
+  </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Pull to refresh"
+          refreshingSpinner="circles"
+          refreshingText="Refreshing...">
+        </ion-refresher-content>
+      </ion-refresher>
+   
+    <!--<h1>tut version </h1>-->
+    <form (ngSubmit)="addScan(f.value)" #f="ngForm" [formGroup]="scanForm">
+      <ion-item>
+        <ion-label>Barcode</ion-label>
+        <!--<ion-input type="text" name="barcode" id="inputTest" [(ngModel)]="Codes"></ion-input>-->
+        <ion-textarea name="barcode" ngModel id="barcode_textarea" #barcode_textarea formControlName="barcode"></ion-textarea>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>Quantity</ion-label>
+        <!--<ion-input type="text" name="barcode" id="inputTest" [(ngModel)]="Codes"></ion-input>-->
+        <ion-input type="number" name="amount" ngModel placeholder="1" #amount_input formControlName="amount"></ion-input>
+      </ion-item>
+
+      <button ion-button type="submit"> add stock </button>
+
+      <!-- 
+<button ion-button tooltip="I'm a tooltip below a button" positionV="bottom" arrow>
+  Press me to see a tooltip
+</button>-->
+    </form>
+    <button ion-button (click)="saveScans()"> Save scans </button>
+
+    <h3>Scanned stock</h3>
+    
+    <!--
+    <ion-item *ngFor='let stockItem of scannedItem'>
+        <button ion-item >
+            {{ stockItem.barcode }}
+          </button>
+          <button ion-item>
+              {{ stockItem.quantity }}
+            </button>
+    </ion-item>
+-->
+
+      <ion-grid>
+          <ion-row>
+            <ion-col col-6> Barcode </ion-col>
+            <ion-col> Quantity </ion-col>
+            <ion-col> edit </ion-col>
+          </ion-row>
+      </ion-grid> 
+
+      <ion-scroll scrollX="true" scrollY="true" class="data-scroll" style="height:45vh;">
+      <ion-grid class="grid-stock">
+          <ion-row *ngFor="let myItem of scannedItem; let i = index" >
+            <ion-col >
+              <ion-item> {{myItem.barcode}} </ion-item>
+            </ion-col>
+            <ion-col >
+              <ion-item> {{myItem.quantity}} </ion-item>
+            </ion-col>
+            <ion-col >
+              <button ion-button icon-only (click)="showEditItem(myItem)">   
+                  <ion-icon name="create"></ion-icon>
+              </button>
+
+              <button  ion-button icon-only (click)="confirmDeletion(myItem)" >   
+                <ion-icon name="backspace"></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-scroll>
+    <!--</ion-scroll>-->
+    
+<!--
+    <h1>test </h1>
+    <ion-item>
+      <ion-label>Barcode</ion-label>
+      <ion-textarea name="codes" [(ngModel)]="Codes"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Amount</ion-label>
+      <ion-input type="number" name="amount" [(ngModel)]="Quantity"></ion-input>
+    </ion-item>
+    <button ion-button (click)="addStock()"> add stock </button>
+  -->
+
+
+     <!--
+    <form id=scanForm (ngSubmit)="scanStockBlank()">
+      <ion-item>
+        <ion-label>Barcode</ion-label>
+        <ion-input type="text" [(ngModel)]="Barcode" name="barcode"></ion-input>
+      </ion-item>
+      <button ion-button type="submit" block>Add Todo</button>
+    </form>-->
+<!--
+    <h1> Demo form </h1>
+    <form (ngSubmit)="logForm()">
+      <ion-item>
+        <ion-label>Todo</ion-label>
+        <ion-input type="text" [(ngModel)]="todo.title" name="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Description</ion-label>
+        <ion-textarea [(ngModel)]="todo.description" name="description"></ion-textarea>
+      </ion-item>
+      <button ion-button type="submit" block>Add Todo</button>
+    </form>
+
+
+    <h1>form group demo</h1>
+    <form [formGroup]="codes" (ngSubmit)="logFormGroup()">
+      <ion-item>
+        <ion-label>Todo</ion-label>
+        <ion-input type="text" formControlName="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Description</ion-label>
+        <ion-textarea formControlName="description"></ion-textarea>
+      </ion-item>
+      <button ion-button type="submit" [disabled]="!codes.valid">Submit</button>
+    </form>
+
+-->
+
+
+</ion-content>

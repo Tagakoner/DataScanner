@@ -1,0 +1,50 @@
+<!--
+  Generated template for the ContinueScansPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>continueScans</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  
+    <ion-grid>
+        <ion-row>
+          <ion-col col-6> Barcode </ion-col>
+          <ion-col> Quantity </ion-col>
+          <ion-col> edit </ion-col>
+        </ion-row>
+    </ion-grid> 
+
+    <ion-scroll scrollX="true" scrollY="true" class="data-scroll" style="height:45vh;">
+    <ion-grid class="grid-stock">
+        <ion-row *ngFor="let myItem of previousScans; let i = index" >
+          <ion-col >
+            <ion-item> {{myItem.barcode}} </ion-item>
+          </ion-col>
+          <ion-col >
+            <ion-item> {{myItem.quantity}} </ion-item>
+          </ion-col>
+          <ion-col >
+            <!--
+            <button ion-button icon-only (click)="showEditItem(myItem)">   
+                <ion-icon name="create"></ion-icon>
+            </button>
+
+            <button  ion-button icon-only (click)="confirmDeletion(myItem)" >   
+              <ion-icon name="backspace"></ion-icon>
+            </button>-->
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-scroll>
+
+</ion-content>

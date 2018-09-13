@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Stock Scanner
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="splash-bg"></div>
+    <div class="splash-info">
+      <div class="splash-logo"></div>
+      <div class="splash-intro">
+        Welcome to Microvet scanning app
+      </div>
+    </div>
+  
+<!--
+    <ion-item>
+        <ion-label color="primary" floating>Barcode</ion-label>
+        <ion-input name="Barcode" ngModel></ion-input>
+      </ion-item>
+    
+    
+    <ion-item>
+        <ion-label color="primary" floating>amount</ion-label>
+        <ion-input type="number"></ion-input>
+    </ion-item>
+  -->
+  <div padding>
+  <button ion-button (click)="scanStock()"> Start new inventory </button>
+  <button ion-button (click)="previousScans()"> show previous scan </button>
+  <button ion-button (click)="continueFromPrevious()"> Continue from previous </button>
+    <ion-list>
+      
+    <ion-item *ngFor='let stockItem of stockItems'>
+        <button ion-item >
+            {{ stockItem.barcode }}
+          </button>
+          <button ion-item>
+              {{ stockItem.quantity }}
+            </button>
+    </ion-item>
+        
+    </ion-list>
+  </div>
+</ion-content>
+
+
+<ion-item *ngFor='let scannedStockItem of scannedStockItems'>
+    <button ion-item >
+        {{ scannedStockItem.barcode }}
+      </button>
+      <button ion-item>
+          {{ scannedStockItem.amount }}
+        </button>
+        <button ion-item>
+            {{ scannedStockItem.date }}
+          </button>
+</ion-item>

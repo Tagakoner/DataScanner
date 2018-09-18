@@ -1,3 +1,6 @@
+import { PreviousScansPageModule } from './../pages/previous-scans/previous-scans.module';
+import { ContinueScansPageModule } from './../pages/continue-scans/continue-scans.module';
+import { AddStockPageModule } from './../pages/add-stock/add-stock.module';
 import { ContinueScansPage } from './../pages/continue-scans/continue-scans';
 import { PreviousScansPage } from './../pages/previous-scans/previous-scans';
 import { AddStockPage } from './../pages/add-stock/add-stock';
@@ -18,16 +21,19 @@ import { SaveProgressProvider } from '../providers/save-progress/save-progress';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    AddStockPage,
-    PreviousScansPage,
-    ContinueScansPage
+    HomePage
+   // AddStockPage,
+   // PreviousScansPage,
+   // ContinueScansPage
   ],
   imports: [
     BrowserModule,
     BrowserModule,    
     HttpModule,
     HttpClientModule,
+    AddStockPageModule,
+    ContinueScansPageModule,
+    PreviousScansPageModule,
     IonicModule.forRoot(MyApp),  
     IonicStorageModule.forRoot()
   ],

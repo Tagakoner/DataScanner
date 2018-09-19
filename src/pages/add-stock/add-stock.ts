@@ -5,6 +5,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import * as papa from 'papaparse';
+import { EmailProvider } from '../../providers/email/email';
 
 
 @IonicPage()
@@ -29,7 +30,8 @@ export class AddStockPage {
     private scanService: ScanServiceProvider,
     private alertCtrl: AlertController,
     private formBuilder: FormBuilder,
-    private saveProgress: SaveProgressProvider) {
+    private saveProgress: SaveProgressProvider,
+    private emailProvider : EmailProvider) {
 
      // this.codes = this.formBuilder.group({
        // title: ['', Validators.required],
@@ -46,9 +48,43 @@ export class AddStockPage {
       });
 
   }
+  /**
+   * @private
+   * Property to assign an scans csv file reference to
+   */
+  private _attachment : any;
 
   ionViewDidLoad() {
     this.barcode_textarea.setFocus();
+ }
+
+/**
+    *
+    * @public
+    * @method retrieveAttachment
+    * @return {none}
+    */
+   retrieveAttachment() : void
+   {
+     //get the correct csv file
+   }
+
+ public sendEmail(){
+   // Retrieve the validated form fields
+   let to 		: string		= "gdswardt@gmail.com",
+   cc 		: string		= "",
+   bcc 		: string		= "",
+   subject 	: string		= "Microvet data capture",
+   message 	: string		= "To whom it my concern, please find attached the latest stock scan csv.";
+
+    // Has the user selected an attachment?
+   // if(this._attachment.length > 1)
+   // {
+      // If so call the sendEmail method of the EmailProvider service, pass in
+      // the retrieved form data and watch the magic happen! :)
+    // this.emailProvider.sendEmail(to, cc, bcc, this._attachment, subject, message);
+     this.emailProvider.sendEmail(to, cc, bcc, subject, message);
+    //}
  }
 
   public saveScans(){
